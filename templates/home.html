@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block main %}
+            <div class="row text-center p-3 welcome">
+                <h3 class="col-12 text-white">Welcome back <b><i>{{request.user}}</i></b></h3>
+            </div>
+
+            <div class="row p-3 ">
+                <table class="table table-striped points">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">name</th>
+                        <th scope="col">score</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for score in score_list %}
+                        <tr>
+                          <th scope="row">{{ forloop.counter }}</th>
+                          <td>{{score.user}}</td>
+                          <td>{{score.score}}</td>
+                        </tr>                    
+                    {% endfor %}
+                    </tbody>
+                  </table>
+            </div>
+
+{% endblock main %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+{% block main %}
+<div class="row question mt-4 mb-1 pt-3">
+    <h3 class="col-12 text-center">Add word</h3>
+</div>
+
+<div class="row">
+    
+    <form method="POST" class="col-12 pb-3">
+        {% csrf_token %}
+        <div class="form-group mt-3">
+            {% if word %}
+                <input name="word" value="{{word}}" type="text" class="form-control" id="wordinput" placeholder="Enter word" disabled>
+            {% else %}
+                <input name="word" type="text" class="form-control" id="wordinput" placeholder="Enter word" autofocus>
+            {% endif %}
+        </div>
+        {% if means %}
+            <input name="have_mean" value="1" type="text" class="form-control" hidden>
+            <input name="word" value="{{word}}" type="text" class="form-control" hidden>
+            <label class="text-white" for=""><b>select means:</b></label>
+            {% for mean in means %}
+                <div class="text-white form-check mb-2 ml-4">
+                    <input name="mean{{ forloop.counter0 }}" value="{{mean}}" type="checkbox" class="form-check-input" id="exampleCheck{{ forloop.counter0 }}">
+                    <label class="form-check-label" for="exampleCheck{{ forloop.counter0 }}">{{mean}}</label>
+                </div>            
+            {% endfor %}
+            <br>
+        {% endif %}
+        <button type="submit" class="btn btn-success col-12">Add word</button>
+    </form>
+</div>
+
+{% endblock main %}

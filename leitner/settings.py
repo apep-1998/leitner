@@ -26,7 +26,7 @@ SECRET_KEY = '^bp97!4bbo=y!^$6idq@aiifx8cdzw9yd)67js##adx9vs0$m#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["46.4.142.132", "127.0.0.1"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -56,7 +56,7 @@ ROOT_URLCONF = 'leitner.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [ os.path.join(BASE_DIR, 'tamplates'),],
+        'DIRS': [ os.path.join(BASE_DIR, 'templates'),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
