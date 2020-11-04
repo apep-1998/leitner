@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block main %}
+            <section class="header">
+                <h3 class="title">{{self.title}}</h3>
+            </section>
+
+            <section class="large-info">
+                <div class="item">
+                    <h4 class="title"><i class="fas fa-list fa-rotate-180"></i> لیست {{self.title}}</h4>
+                    <div class="content">
+                        <table>
+                            <tr>
+                                {% for head in self.heads %}
+                                    <th>{{head}}</th>
+                                {% endfor %}
+                            </tr>
+                            {% for item in items %}
+                                    <tr class="hover">
+                                        {% for d in item.1 %}
+                                            <td>
+                                                {% if forloop.counter0 == 2 and d != 0%}
+                                                    <a href="/panel/test/{{item.0}}"> 
+                                                        {{d}}
+                                                    </a>
+                                                {% elif forloop.counter0 == 3 and d != 0%}
+                                                    <a href="/panel/review/{{item.0}}"> 
+                                                        {{d}}
+                                                    </a>
+                                                {% else %}
+                                                        {{d}}
+                                                {% endif %}
+                                            </td>
+                                        {% endfor %}
+                                    </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+{% endblock main %}

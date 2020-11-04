@@ -43,15 +43,15 @@ def get_numbers(request):
 
 @login_required
 def index(request):
-    score_list = []
-    for user in User.objects.all():
-        score = 0
-        for word in LeitnerModel.objects.filter(user=user):
-            score += word.word_spell_level * 2
-            score += word.word_mean_level
-        score_list.append({"user": user, "score":score})
-    score_list.sort(reverse=True, key=lambda x: x['score'])
-    page_data = locals()
-    page_data.update(get_numbers(request))
-    return render(request, "home.html", page_data)
+    # score_list = []
+    # for user in User.objects.all():
+    #     score = 0
+    #     for word in LeitnerModel.objects.filter(user=user):
+    #         score += word.word_spell_level * 2
+    #         score += word.word_mean_level
+    #     score_list.append({"user": user, "score":score})
+    # score_list.sort(reverse=True, key=lambda x: x['score'])
+    # page_data = locals()
+    # page_data.update(get_numbers(request))
+    return render(request, "home.html", locals())
 

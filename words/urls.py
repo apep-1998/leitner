@@ -14,15 +14,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path, include
-from words.views import MeanTest, addall, SpellTest, MeanReview, SpellReview, AddWord
+from words.views import *
 from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
-    path('mean', login_required(MeanTest.as_view())),
-    path('meanreview/<int:page>', login_required(MeanReview.as_view())),
-    path('meanreview/', login_required(MeanReview.as_view())),
-    path('spell', login_required(SpellTest.as_view())),
-    path('spellreview', login_required(SpellReview.as_view())),
-    path('addword', login_required(AddWord.as_view())),
-    path('addall', addall),
+    path('', index_view, name="index"),
+    path('addcat/', login_required(AddCat.as_view()), name="add cat"),
+    # path('listcat/', login_required(ListCat.as_view()), name="list cat"),
+    
+    path('addword/', login_required(AddWord.as_view()), name="add word"),
+    path('addbox/', login_required(AddBox.as_view()), name="add box"),
+    path('add2box/', login_required(Add2Box.as_view()), name="add item box"),
+    path('meanboxlist/', login_required(MeanBoxList.as_view()), name="mean box list"),
+    path('spellboxlist/', login_required(SpellBoxList.as_view()), name="spell box list"),
+    path('test/<int:boxnumber>/', login_required(TestBox.as_view()), name="test box"),
 ]

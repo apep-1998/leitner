@@ -1,0 +1,1500 @@
+@font-face {
+    font-family: IRANSans;
+    font-style: normal;
+    font-weight: bold;
+    src: url('../fonts/IRANSans-Bold-web.woff') format('woff');  /* All Major Browsers */
+}
+@font-face {
+    font-family: IRANSans;
+    font-style: normal;
+    font-weight: 500;
+    src: url('../fonts/IRANSans-Medium-web.woff') format('woff');  /* All Major Browsers */
+}
+@font-face {
+    font-family: IRANSans;
+    font-style: normal;
+    font-weight: 300;
+    src: url('../fonts/IRANSans-Light-web.woff') format('woff');  /* All Major Browsers */
+}
+@font-face {
+    font-family: IRANSans;
+    font-style: normal;
+    font-weight: 200;
+    src: url('../fonts/IRANSans-UltraLight-web.woff') format('woff');  /* All Major Browsers */
+}
+@font-face {
+    font-family: IRANSans;
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/IRANSans-web.woff') format('woff');  /* All Major Browsers */
+}
+*{
+    direction: rtl;
+    text-align: right;
+    margin: 0px;
+    padding: 0px;
+    outline: 0;
+    border: 0;
+    color: rgba(10,10,10,0.9);
+    font-size: 11px;
+    font-family: IRANSans;
+    font-weight: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+    background-color: transparent;
+    background-position: center top;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    transition: 0.2s;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -o-transition: 0.2s;
+}
+html{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+body{
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(221, 221, 221,1);
+}
+@media screen and (min-width: 1000px) {
+
+    body{
+        min-width: 1000px;
+    }
+    button.menu{
+        display: none;
+    }
+    header{
+        display: block;
+        overflow: hidden;
+        float: left;
+        width: 82%;
+        height: auto;
+        border-bottom: 1px solid rgba(56, 73, 96, 0.2);
+        background-color: rgba(56, 73, 96,0.2);
+    }
+    header > nav{
+        display: block;
+        overflow: hidden;
+        width: auto;
+        height: auto;
+    }
+    header > nav > a{
+        display: block;
+        cursor: pointer;
+        float: right;
+        width: 120px;
+        height: auto;
+        line-height: 35px;
+        padding: 0.23% 0;
+        text-align: center;
+    }
+    header > nav > a > i{
+        font-size: 11px;
+        margin: 0 1px;
+    }
+    header > nav > a > label{
+        cursor: pointer;
+        color: rgba(255,100,0,0.7);
+    }
+    header > nav > a:hover{
+        background-color: rgba(255,255,255,0.05);
+    }
+
+
+    aside.main-menu{
+        display: block;
+        position: fixed;
+        float: right;
+        width: 18%;
+        height: 100%;
+        background-color: rgba(56, 73, 96,0.2);
+    }
+    aside.main-menu > section.logo{
+        display: block;
+        cursor: default;
+        width: auto;
+        height: auto;
+        line-height: 35px;
+        padding: 1% 0;
+        border-bottom: 1px solid rgba(56, 73, 96, 0.2);
+        color: rgb(27, 124, 170);
+        font-family: IRANSans;
+        font-size: 20px;
+        text-align: center;
+    }
+    aside.main-menu > section.logo > label{
+        color: rgba(255,255,255,0.9);
+        font-size: 20px;
+        text-align: center;
+    }
+    aside.main-menu > section.user-details{
+        display: block;
+        overflow: hidden;
+        width: auto;
+        height: auto;
+        margin: 5% 0;
+        padding: 2%;
+        text-align: center;
+    }
+    aside.main-menu > section.user-details > span{
+        display: block;
+        width: 160px;
+        height: auto;
+        margin: 0 auto;
+    }
+    aside.main-menu > section.user-details > span > div{
+        display: block;
+        position: relative;
+        float: left;
+        width: 50px;
+        height: 50px;
+    }
+    aside.main-menu > section.user-details > span > div > img{
+        display: block;
+        position: absolute;
+        z-index: 2;
+        width: 34px;
+        height: auto;
+        margin: 8px
+    }
+    aside.main-menu > section.user-details > span > div > canvas{
+        display: block;
+        position: absolute;
+        z-index: 1;
+        margin-top: -5px;
+    }
+    aside.main-menu > section.user-details > span > label{
+        display: block;
+        float: left;
+        width: 110px;
+        height: auto;
+        line-height: 50px;
+        padding: 0 10px;
+        text-align: center;
+    }
+    aside.main-menu > nav{
+        display: block;
+        width: auto;
+        height: auto;
+    }
+    aside.main-menu > nav > a, aside.main-menu > nav > ul > li, aside.main-menu > nav > ul > ul > li{
+        display: block;
+        cursor: pointer;
+        width: 100%;
+        height: auto;
+        text-align: right;
+        line-height: 40px;
+        font-size: 12px;
+    }
+    aside.main-menu > nav > ul > ul > li > a{
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    aside.main-menu > nav > a > i, aside.main-menu > nav > ul > li > i, aside.main-menu > nav > ul > ul > li > a > i{
+        width: 15px;
+        margin: 0 10%;
+        text-align: center;
+    }
+    aside.main-menu > nav > a > img.menu-img, aside.main-menu > nav > ul > li > img.menu-img, aside.main-menu > nav > ul > ul > li > a > img.menu-img{
+        max-width: 18px;
+        width: 18px;
+        margin: 0 10%;
+        margin-bottom: -5px;
+    }
+    aside.main-menu > nav > ul > li > i.fa-ellipsis-h{
+        display: block;
+        float: left;
+        width: auto;
+        height: auto;
+        line-height: 40px;
+        margin: 0 6%;
+        font-size: 10px;
+    }
+    aside.main-menu > nav > ul > li.active{
+        background-color: rgba(255,255,255,0.05);
+    }
+    aside.main-menu > nav > a:hover, aside.main-menu > nav > ul > li:hover, aside.main-menu > nav > ul > ul > li:hover{
+        background-color: rgba(255,255,255,0.05);
+    }
+    aside.main-menu > nav > ul > ul{ display: none; }
+    aside.main-menu > nav > ul > ul > li{
+        padding: 0 10px;
+        background-color: rgba(255,255,255,0.03);
+    }
+    aside.main-menu > nav > ul > ul > li:hover{
+        background-color: rgba(255,255,255,0.05);
+    }
+
+    main.container{
+        display: block;
+        float: left;
+        width: 82%;
+        height: auto;
+        padding: 1%;
+    }
+    h5.alert{
+        display: block;
+        width: auto;
+        height: auto;
+        margin: 0.6%;
+        padding: 10px;
+        border-radius: 2px;
+        border: 1px solid rgba(255,255,255,0.01);
+        background-color: rgba(255,255,255,0.05);
+        box-shadow: 0px 2px 3px 2px rgba(0,0,0,0.2);
+    }
+    h5.alert.green{
+        border: 1px solid rgba(35, 119, 27,0.1);
+        background-color: rgba(35, 119, 27,0.4);
+    }
+    h5.alert.yellow{
+        border: 1px solid rgba(208, 211, 33,0.1);
+        background-color: rgba(208, 211, 33,0.4);
+    }
+    h5.alert.orange{
+        border: 1px solid rgba(234, 96, 37,0.1);
+        background-color: rgba(234, 96, 37,0.4);
+    }
+    h5.alert.red{
+        border: 1px solid rgba(175, 26, 26,0.1);
+        background-color: rgba(175, 26, 26,0.4);
+    }
+    main.container > section.header{
+        display: block;
+        overflow: hidden;
+        width: auto;
+        height: auto;
+    }
+    main.container > section.header > h3.title{
+        display: block;
+        width: auto;
+        height: auto;
+        line-height: 35px;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    main.container > section.small-info{
+        display: block;
+        overflow: hidden;
+        width: 100%;
+        height: auto;
+        padding: 0.8% 0.5%;
+        text-align: left;
+    }
+    main.container > section.small-info > div.item{
+        display: block;
+        float: right;
+        width: 23%;
+        height: auto;
+        margin-left: 2.6%;
+        border-radius: 2px;
+        border: 1px solid rgba(255,255,255,0.01);
+        background-color: rgba(255,255,255,0.05);
+        box-shadow: 0px 2px 3px 2px rgba(0,0,0,0.2);
+    }
+    main.container > section.small-info > div.item:last-child{
+        margin-left: 0;
+    }
+    main.container > section.small-info > div.item > i{
+        display: block;
+        float: right;
+        width: auto;
+        height: auto;
+        margin: 5% 3%;
+        margin-left: 3.5%;
+        font-size: 270%;
+    }
+    main.container > section.small-info > div.item > div.info{
+        display: block;
+        float: right;
+        width: auto;
+        height: 34px;
+        margin: 4% 0;
+        padding: 0 2%;
+    }
+    main.container > section.small-info > div.item > div.info > h4{
+        font-weight: bold;
+        line-height: 20px;
+    }
+    main.container > section.small-info > div.item > div.info > h5{
+        overflow: hidden;
+        font-size: 12px;
+        line-height: 14px;
+        font-weight: normal;
+    }
+
+    main.container > section.medium-info{
+        display: block;
+        overflow: hidden;
+        width: 100%;
+        height: auto;
+        padding: 0.8% 0.5%;
+        text-align: right;
+    }
+    main.container > section.medium-info > .item{
+        display: block;
+        float: right;
+        width: 48.6%;
+        height: auto;
+        margin-left: 2.6%;
+        border-radius: 2px;
+        border: 1px solid rgba(255,255,255,0.01);
+        background-color: rgba(255,255,255,0.05);
+        box-shadow: 0px 2px 3px 2px rgba(0,0,0,0.2);
+    }
+    main.container > section.medium-info > .small-item{
+        display: block;
+        overflow: hidden;
+        float: right;
+        width: 23%;
+        height: auto;
+        margin-left: 2.6%;
+        border-radius: 2px;
+        border: 1px solid rgba(255,255,255,0.01);
+        background-color: rgba(255,255,255,0.05);
+        box-shadow: 0px 2px 3px 2px rgba(0,0,0,0.2);
+    }
+    main.container > section.small-info > .item.last, main.container > section.medium-info > .item.last, main.container > section.medium-info > .small-item.last{
+        margin-left: 0;
+    }
+    main.container > section.large-info > .item{
+        display: block;
+        width: auto;
+        height: auto;
+        margin: 1.5% 0.5%;
+        border-radius: 2px;
+        border: 1px solid rgba(255,255,255,0.01);
+        background-color: rgba(255,255,255,0.05);
+        box-shadow: 0px 2px 3px 2px rgba(0,0,0,0.2);
+    }
+    main.container > section.medium-info > .item > h4.title, main.container > section.medium-info > .small-item > h4.title, main.container > section.large-info > .item > h4.title{
+        display: block;
+        width: 100%;
+        height: auto;
+        line-height: 28px;
+        padding: 4px 15px;
+        font-size: 11px;
+        font-weight: bolder;
+        border-bottom: 1px solid rgba(200,200,200,0.1);
+    }
+    main.container > section.medium-info > .item > h4.title > img, main.container > section.medium-info > .small-item > h4.title > img, main.container > section.large-info > .item > h4.title > img{
+        display: inline-block;
+        width: 22px;
+        height: auto;
+        margin-left: 1%;
+        margin-bottom: -6px;
+    }
+    main.container > section.medium-info > .item > h4.title > i, main.container > section.medium-info > .small-item > h4.title > i, main.container > section.large-info > .item > h4.title > i{
+        display: inline-block;
+        margin-left: 1%;
+        font-size: 12px;
+    }
+    main.container > section.medium-info > .item > .content > h5.alert, main.container > section.medium-info > .small-item > .content > h5.alert, main.container > section.large-info > .item > .content > h5.alert{
+        margin: 1.5%;
+        padding: 1.2%;
+    }
+    main.container > section.medium-info > .item > .content > form, main.container > section.medium-info > .small-item > .content > form, main.container > section.large-info > .item > .content > form{
+        display: block;
+        width: auto;
+        height: auto;
+        margin: 1.5%;
+    }
+    main.container > section.medium-info > .item > .content > form > span, main.container > section.medium-info > .small-item > .content > form > span, main.container > section.large-info > .item > .content > form > span{
+        display: block;
+        overflow: hidden;
+        width: auto;
+        height: auto;
+        margin: 3% 0%;
+    }
+    main.container > section.medium-info > .item > .content > form > span > label, main.container > section.medium-info > .small-item > .content > form > span > label, main.container > section.large-info > .item > .content > form > span > label{
+        display: block;
+        float: right;
+        width: 20%;
+        height: auto;
+        line-height: 30px;
+    }
+    main.container > section.medium-info > .item > .content > form > span > input[type="text"],
+    main.container > section.medium-info > .item > .content > form > span > input[type="email"],
+    main.container > section.medium-info > .item > .content > form > span > input[type="password"],
+    main.container > section.medium-info > .small-item > .content > form > span > input[type="text"],
+    main.container > section.medium-info > .small-item > .content > form > span > input[type="email"],
+    main.container > section.medium-info > .small-item > .content > form > span > input[type="password"],
+    main.container > section.medium-info > .item > .content > form > span > select,
+    main.container > section.medium-info > .item > .content > form > span > textarea,
+    main.container > section.large-info > .item > .content > form > span > input[type="text"],
+    main.container > section.large-info > .item > .content > form > span > input[type="email"],
+    main.container > section.large-info > .item > .content > form > span > input[type="password"],
+    main.container > section.large-info > .small-item > .content > form > span > input[type="text"],
+    main.container > section.large-info > .small-item > .content > form > span > input[type="email"],
+    main.container > section.large-info > .small-item > .content > form > span > input[type="password"],
+    main.container > section.large-info > .item > .content > form > span > select,
+    main.container > section.large-info > .item > .content > form > span > textarea{
+        display: block;
+        float: right;
+        width: 80%;
+        height: 30px;
+        line-height: 30px;
+    }
+    main.container > section.medium-info > .item > .content > form > span > textarea, main.container > section.large-info > .item > .content > form > span > textarea{
+        min-width: 80%;
+        max-width: 80%;
+        height: auto;
+        line-height: 18px;
+        min-height: 30px;
+        max-height: 100px;
+    }
+    main.container > section.medium-info > .item > .content > form > span.radio-input > label[for], main.container > section.large-info > .item > .content > form > span.radio-input > label[for]{
+        cursor: pointer;
+        width: auto;
+        margin-left: 15px;
+    }
+    main.container > section.medium-info > .item > .content > form > span > input[type="radio"], main.container > section.large-info > .item > .content > form > span > input[type="radio"]{
+        display: block;
+        cursor: pointer;
+        float: right;
+        width: auto;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        margin: 0 2px;
+    }
+    main.container > section.medium-info > .item > .content > form > div.btns, main.container > section.large-info > .item > .content > form > div.btns{
+        display: block;
+        width: auto;
+        height: auto;
+        text-align: center;
+    }
+    main.container > section.medium-info > .item > .content > form > div.btns > button, main.container > section.large-info > .item > .content > form > div.btns > button, main.container > section.medium-info > .item > .content > form > div.btns > a.btn, main.container > section.large-info > .item > .content > form > div.btns > a.btn{
+        display: inline-block;
+        cursor: pointer;
+        width: 25%;
+        height: auto;
+        line-height: 30px;
+        margin: 1%;
+        text-align: center;
+        border-radius: 2px;
+        border: 1px solid rgba(255,255,255,0.01);
+        background-color: rgba(255,255,255,0.05);
+        box-shadow: 0px 2px 3px 2px rgba(0,0,0,0.2);
+    }
+    main.container > section.medium-info > .item > .content > form > div.btns > button:hover, main.container > section.large-info > .item > .content > form > div.btns > button:hover{
+        border: 1px solid rgba(255,255,255,0.02);
+        background-color: rgba(255,255,255,0.07);
+        box-shadow: 0px 2px 3px 1px rgba(0,0,0,0.2);
+    }
+    main.container > section.medium-info > .item > .content > p, main.container > section.medium-info > .small-item > .content > p, main.container > section.large-info > .item > .content > p{
+        display: block;
+        width: auto;
+        height: auto;
+        padding: 17px 20px;
+    }
+    main.container > section.medium-info > .item > .content > table, main.container > section.medium-info > .small-item > .content > table, main.container > section.large-info > .item > .content > table{
+        width: 97%;
+        margin: 1.5%;
+    }
+    main.container > section.medium-info > .item > .content > table td, main.container > section.medium-info > .small-item > .content > table td, main.container > section.large-info > .item > .content > table td,
+    main.container > section.medium-info > .item > .content > table th, main.container > section.medium-info > .small-item > .content > table th, main.container > section.large-info > .item > .content > table th{
+        line-height: 23px;
+        text-align: center;
+    }
+    main.container > section.medium-info > .item > .content > table td.right, main.container > section.medium-info > .small-item > .content > table td.right, main.container > section.large-info > .item > .content > table td.right{ text-align: right; }
+    main.container > section.medium-info > .item > .content > table td.left, main.container > section.medium-info > .small-item > .content > table td.left, main.container > section.large-info > .item > .content > table td.left{ text-align: left; }
+    main.container > section.medium-info > .item > .content > table th, main.container > section.medium-info > .small-item > .content > table th, main.container > section.large-info > .item > .content > table th{
+        font-weight: bold;
+        border-bottom: 0px;
+        background-color: rgba(255,255,255,0.05);
+    }
+    main.container > section.medium-info > .item > .content > table tr.hover:hover, main.container > section.medium-info > .small-item > .content > table tr.hover:hover, main.container > section.large-info > .item > .content > table tr.hover:hover{
+        background-color: rgba(255,255,255,0.05);
+    }
+    main.container > section.medium-info > .item > .content > table td > img, main.container > section.medium-info > .small-item > .content > table td > img, main.container > section.large-info > .item > .content > table td > img{
+        width: 15px;
+        margin: 0 1%;
+        margin-bottom: -4px;
+    }
+
+}
+@media screen and (min-width: 700px) and (max-width: 999px) {
+
+    body{
+        min-width: 700px;
+    }
+    header{
+        display: block;
+        overflow: hidden;
+        float: left;
+        width: 100%;
+        height: auto;
+        border-bottom: 1px solid rgba(56, 73, 96, 0.2);
+        background-color: rgba(56, 73, 96,0.2);
+    }
+    header > nav{
+        display: block;
+        overflow: hidden;
+        width: auto;
+        height: auto;
+    }
+    header > nav > a{
+        display: block;
+        cursor: pointer;
+        float: right;
+        width: 120px;
+        height: auto;
+        line-height: 35px;
+        padding: 0.23% 0;
+        text-align: center;
+    }
+    header > nav > a > i{
+        font-size: 11px;
+        margin: 0 1px;
+    }
+    header > nav > a > label{
+        cursor: pointer;
+        color: rgba(255,100,0,0.7);
+    }
+    header > nav > a:hover{
+        background-color: rgba(255,255,255,0.05);
+    }
+    header > nav > button.menu{
+        display: block;
+        cursor: pointer;
+        float: right;
+        width: 35px;
+        height: auto;
+        line-height: 35px;
+        padding: 0.23% 0;
+        text-align: center;
+        font-size: 100%;
+    }
+    header > nav > button.menu:hover i{
+        color: darkgoldenrod;
+    }
+
+
+    aside.main-menu{
+        display: none;
+        position: fixed;
+        float: right;
+        width: 50%;
+        height: 100%;
+        background-color: rgba(25,24,39,1);
+    }
+    aside.main-menu > section.logo{
+        display: block;
+        position: relative;
+        cursor: default;
+        width: auto;
+        height: auto;
+        line-height: 35px;
+        padding: 1% 0;
+        border-bottom: 1px solid rgba(56, 73, 96, 0.2);
+        color: rgb(27, 124, 170);
+        font-family: IRANSans;
+        font-size: 20px;
+        text-align: center;
+    }
+    aside.main-menu > section.logo > label{
+        color: rgba(255,255,255,0.9);
+        font-size: 20px;
+        text-align: center;
+    }
+    aside.main-menu > section.logo > button.menu{
+        display: block;
+        cursor: pointer;
+        position: absolute;
+        width: 35px;
+        height: auto;
+        line-height: 35px;
+        padding: 1% 0;
+        text-align: center;
+        left: 0px;
+        top: 0px;
+    }
+    aside.main-menu > section.logo > button.menu:hover i{
+        color: darkgoldenrod;
+    }
+    aside.main-menu > section.user-details{
+        display: block;
+        overflow: hidden;
+        width: auto;
+        height: auto;
+        margin: 5% 0;
+        padding: 2%;
+        text-align: center;
+    }
+    aside.main-menu > section.user-details > span{
+        display: block;
+        width: 160px;
+        height: auto;
+        margin: 0 auto;
+    }
+    aside.main-menu > section.user-details > span > div{
+        display: block;
+        position: relative;
+        float: left;
+        width: 50px;
+        height: 50px;
+    }
+    aside.main-menu > section.user-details > span > div > img{
+        display: block;
+        position: absolute;
+        z-index: 2;
+        width: 34px;
+        height: auto;
+        margin: 8px
+    }
+    aside.main-menu > section.user-details > span > div > canvas{
+        display: block;
+        position: absolute;
+        z-index: 1;
+        margin-top: -5px;
+    }
+    aside.main-menu > section.user-details > span > label{
+        display: block;
+        float: right;
+        width: 110px;
+        height: auto;
+        line-height: 50px;
+        padding: 0 10px;
+        text-align: center;
+    }
+    aside.main-menu > nav{
+        display: block;
+        width: auto;
+        height: auto;
+    }
+    aside.main-menu > nav > a, aside.main-menu > nav > ul > li, aside.main-menu > nav > ul > ul > li{
+        display: block;
+        cursor: pointer;
+        width: 100%;
+        height: auto;
+        text-align: right;
+        line-height: 40px;
+        font-size: 12px;
+    }
+    aside.main-menu > nav > ul > ul > li > a{
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    aside.main-menu > nav > a > i, aside.main-menu > nav > ul > li > i, aside.main-menu > nav > ul > ul > li > a > i{
+        width: 15px;
+        margin: 0 8%;
+        text-align: center;
+    }
+    aside.main-menu > nav > ul > li > i.fa-ellipsis-h{
+        display: block;
+        float: left;
+        width: auto;
+        height: auto;
+        line-height: 40px;
+        margin: 0 6%;
+        font-size: 10px;
+    }
+    aside.main-menu > nav > ul > li.active{
+        background-color: rgba(255,255,255,0.05);
+    }
+    aside.main-menu > nav > a:hover, aside.main-menu > nav > ul > li:hover, aside.main-menu > nav > ul > ul > li:hover{
+        background-color: rgba(255,255,255,0.05);
+    }
+    aside.main-menu > nav > ul > ul{ display: none; }
+    aside.main-menu > nav > ul > ul > li{
+        padding: 0 10px;
+        background-color: rgba(255,255,255,0.03);
+    }
+    aside.main-menu > nav > ul > ul > li:hover{
+        background-color: rgba(255,255,255,0.05);
+    }
+
+    main.container{
+        display: block;
+        float: left;
+        width: 100%;
+        height: auto;
+        padding: 1.5%;
+    }
+    h5.alert{
+        display: block;
+        width: auto;
+        height: auto;
+        margin: 0.6%;
+        padding: 10px;
+        border-radius: 2px;
+        border: 1px solid rgba(255,255,255,0.01);
+        background-color: rgba(255,255,255,0.05);
+        box-shadow: 0px 2px 3px 2px rgba(0,0,0,0.2);
+    }
+    h5.alert.green{
+        border: 1px solid rgba(35, 119, 27,0.1);
+        background-color: rgba(35, 119, 27,0.4);
+    }
+    h5.alert.yellow{
+        border: 1px solid rgba(208, 211, 33,0.1);
+        background-color: rgba(208, 211, 33,0.4);
+    }
+    h5.alert.orange{
+        border: 1px solid rgba(234, 96, 37,0.1);
+        background-color: rgba(234, 96, 37,0.4);
+    }
+    h5.alert.red{
+        border: 1px solid rgba(175, 26, 26,0.1);
+        background-color: rgba(175, 26, 26,0.4);
+    }
+    main.container > section.header{
+        display: block;
+        overflow: hidden;
+        width: auto;
+        height: auto;
+    }
+    main.container > section.header > h3.title{
+        display: block;
+        width: auto;
+        height: auto;
+        line-height: 35px;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    main.container > section.small-info{
+        display: block;
+        overflow: hidden;
+        width: 100%;
+        height: auto;
+        padding: 0.8% 0.5%;
+        text-align: right;
+    }
+    main.container > section.small-info > div.item{
+        display: block;
+        float: right;
+        width: 23%;
+        height: auto;
+        margin-left: 2.6%;
+        border-radius: 2px;
+        border: 1px solid rgba(255,255,255,0.01);
+        background-color: rgba(255,255,255,0.05);
+        box-shadow: 0px 2px 3px 2px rgba(0,0,0,0.2);
+    }
+    main.container > section.small-info > div.item:last-child{
+        margin-left: 0;
+    }
+    main.container > section.small-info > div.item > i{
+        display: block;
+        float: right;
+        width: auto;
+        height: auto;
+        margin: 5% 3%;
+        margin-right: 3.5%;
+        font-size: 270%;
+    }
+    main.container > section.small-info > div.item > div.info{
+        display: block;
+        float: right;
+        width: auto;
+        height: 34px;
+        margin: 4% 0;
+        padding: 0 2%;
+    }
+    main.container > section.small-info > div.item > div.info > h4{
+        font-weight: bold;
+        line-height: 20px;
+    }
+    main.container > section.small-info > div.item > div.info > h5{
+        font-size: 10px;
+        line-height: 14px;
+        font-weight: normal;
+    }
+
+    main.container > section.medium-info{
+        display: block;
+        overflow: hidden;
+        width: 100%;
+        height: auto;
+        padding: 0.8% 0.5%;
+        text-align: right;
+    }
+    main.container > section.medium-info > .item{
+        display: block;
+        float: right;
+        width: 48.6%;
+        height: auto;
+        margin-left: 2.6%;
+        border-radius: 2px;
+        border: 1px solid rgba(255,255,255,0.01);
+        background-color: rgba(255,255,255,0.05);
+        box-shadow: 0px 2px 3px 2px rgba(0,0,0,0.2);
+    }
+    main.container > section.medium-info > .small-item{
+        display: block;
+        overflow: hidden;
+        float: right;
+        width: 23%;
+        height: auto;
+        margin-left: 2.6%;
+        border-radius: 2px;
+        border: 1px solid rgba(255,255,255,0.01);
+        background-color: rgba(255,255,255,0.05);
+        box-shadow: 0px 2px 3px 2px rgba(0,0,0,0.2);
+    }
+    main.container > section.medium-info > .item.last, main.container > section.medium-info > .small-item.last{
+        margin-left: 0;
+    }
+    main.container > section.large-info > .item{
+        display: block;
+        width: auto;
+        height: auto;
+        margin: 0.5%;
+        border-radius: 2px;
+        border: 1px solid rgba(255,255,255,0.01);
+        background-color: rgba(255,255,255,0.05);
+        box-shadow: 0px 2px 3px 2px rgba(0,0,0,0.2);
+    }
+    main.container > section.medium-info > .item > h4.title, main.container > section.medium-info > .small-item > h4.title, main.container > section.large-info > .item > h4.title{
+        display: block;
+        width: 100%;
+        height: auto;
+        line-height: 28px;
+        padding: 4px 15px;
+        font-size: 11px;
+        font-weight: bolder;
+        border-bottom: 1px solid rgba(200,200,200,0.1);
+    }
+    main.container > section.medium-info > .item > h4.title > img, main.container > section.medium-info > .small-item > h4.title > img, main.container > section.large-info > .item > h4.title > img{
+        display: inline-block;
+        width: 22px;
+        height: auto;
+        margin-left: 1%;
+        margin-bottom: -6px;
+    }
+    main.container > section.medium-info > .item > h4.title > i, main.container > section.medium-info > .small-item > h4.title > i, main.container > section.large-info > .item > h4.title > i{
+        display: inline-block;
+        margin-left: 1%;
+        font-size: 12px;
+    }
+    main.container > section.medium-info > .item > .content > h5.alert, main.container > section.medium-info > .small-item > .content > h5.alert, main.container > section.large-info > .item > .content > h5.alert{
+        margin: 1.5%;
+        padding: 1.2%;
+    }
+    main.container > section.medium-info > .item > .content > form, main.container > section.medium-info > .small-item > .content > form, main.container > section.large-info > .item > .content > form{
+        display: block;
+        width: auto;
+        height: auto;
+        margin: 1.5%;
+    }
+    main.container > section.medium-info > .item > .content > form > span, main.container > section.medium-info > .small-item > .content > form > span, main.container > section.large-info > .item > .content > form > span{
+        display: block;
+        overflow: hidden;
+        width: auto;
+        height: auto;
+        margin: 3% 0%;
+    }
+    main.container > section.medium-info > .item > .content > form > span > label, main.container > section.medium-info > .small-item > .content > form > span > label, main.container > section.large-info > .item > .content > form > span > label{
+        display: block;
+        float: right;
+        width: 20%;
+        height: auto;
+        line-height: 30px;
+    }
+    main.container > section.medium-info > .item > .content > form > span > input[type="text"],
+    main.container > section.medium-info > .item > .content > form > span > input[type="email"],
+    main.container > section.medium-info > .item > .content > form > span > input[type="password"],
+    main.container > section.medium-info > .small-item > .content > form > span > input[type="text"],
+    main.container > section.medium-info > .small-item > .content > form > span > input[type="email"],
+    main.container > section.medium-info > .small-item > .content > form > span > input[type="password"],
+    main.container > section.medium-info > .item > .content > form > span > select,
+    main.container > section.medium-info > .item > .content > form > span > textarea,
+    main.container > section.large-info > .item > .content > form > span > input[type="text"],
+    main.container > section.large-info > .item > .content > form > span > input[type="email"],
+    main.container > section.large-info > .item > .content > form > span > input[type="password"],
+    main.container > section.large-info > .small-item > .content > form > span > input[type="text"],
+    main.container > section.large-info > .small-item > .content > form > span > input[type="email"],
+    main.container > section.large-info > .small-item > .content > form > span > input[type="password"],
+    main.container > section.large-info > .item > .content > form > span > select,
+    main.container > section.large-info > .item > .content > form > span > textarea{
+        display: block;
+        float: right;
+        width: 80%;
+        height: 30px;
+        line-height: 30px;
+    }
+    main.container > section.medium-info > .item > .content > form > span > textarea, main.container > section.large-info > .item > .content > form > span > textarea{
+        min-width: 80%;
+        max-width: 80%;
+        height: auto;
+        line-height: 18px;
+        min-height: 30px;
+        max-height: 100px;
+    }
+    main.container > section.medium-info > .item > .content > form > span.radio-input > label[for], main.container > section.large-info > .item > .content > form > span.radio-input > label[for]{
+        cursor: pointer;
+        width: auto;
+        margin-left: 15px;
+    }
+    main.container > section.medium-info > .item > .content > form > span > input[type="radio"], main.container > section.large-info > .item > .content > form > span > input[type="radio"]{
+        display: block;
+        cursor: pointer;
+        float: right;
+        width: auto;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        margin: 0 1px;
+    }
+    main.container > section.medium-info > .item > .content > form > div.btns, main.container > section.large-info > .item > .content > form > div.btns{
+        display: block;
+        width: auto;
+        height: auto;
+        text-align: center;
+    }
+    main.container > section.medium-info > .item > .content > form > div.btns > button, main.container > section.large-info > .item > .content > form > div.btns > button, main.container > section.medium-info > .item > .content > form > div.btns > a.btn, main.container > section.large-info > .item > .content > form > div.btns > a.btn{
+        display: inline-block;
+        cursor: pointer;
+        width: 25%;
+        height: auto;
+        line-height: 30px;
+        margin: 1%;
+        text-align: center;
+        border-radius: 2px;
+        border: 1px solid rgba(255,255,255,0.01);
+        background-color: rgba(255,255,255,0.05);
+        box-shadow: 0px 2px 3px 2px rgba(0,0,0,0.2);
+    }
+    main.container > section.medium-info > .item > .content > form > div.btns > button:hover, main.container > section.large-info > .item > .content > form > div.btns > button:hover{
+        border: 1px solid rgba(255,255,255,0.02);
+        background-color: rgba(255,255,255,0.07);
+        box-shadow: 0px 2px 3px 1px rgba(0,0,0,0.2);
+    }
+    main.container > section.medium-info > .item > .content > p, main.container > section.medium-info > .small-item > .content > p, main.container > section.large-info > .item > .content > p{
+        display: block;
+        width: auto;
+        height: auto;
+        padding: 17px 20px;
+    }
+    main.container > section.medium-info > .item > .content > table, main.container > section.medium-info > .small-item > .content > table, main.container > section.large-info > .item > .content > table{
+        width: 97%;
+        margin: 1.5%;
+    }
+    main.container > section.medium-info > .item > .content > table td, main.container > section.medium-info > .small-item > .content > table td, main.container > section.large-info > .item > .content > table td,
+    main.container > section.medium-info > .item > .content > table th, main.container > section.medium-info > .small-item > .content > table th, main.container > section.large-info > .item > .content > table th{
+        line-height: 23px;
+        text-align: center;
+    }
+    main.container > section.medium-info > .item > .content > table th, main.container > section.medium-info > .small-item > .content > table th, main.container > section.large-info > .item > .content > table th{
+        font-weight: bold;
+        border-bottom: 0px;
+        background-color: rgba(255,255,255,0.05);
+    }
+    main.container > section.medium-info > .item > .content > table tr.hover:hover, main.container > section.medium-info > .small-item > .content > table tr.hover:hover, main.container > section.large-info > .item > .content > table tr.hover:hover{
+        background-color: rgba(255,255,255,0.05);
+    }
+
+}
+@media screen and (max-width: 699px) {
+
+    body{
+        min-width: 320px;
+    }
+    header{
+        display: block;
+        overflow: hidden;
+        float: left;
+        width: 100%;
+        height: auto;
+        border-bottom: 1px solid rgba(56, 73, 96, 0.2);
+        background-color: rgba(56, 73, 96,0.2);
+    }
+    header > nav{
+        display: block;
+        overflow: hidden;
+        width: auto;
+        height: auto;
+    }
+    header > nav > a{
+        display: block;
+        cursor: pointer;
+        float: right;
+        width: 120px;
+        height: auto;
+        line-height: 35px;
+        padding: 0.23% 0;
+        text-align: center;
+    }
+    header > nav > a > i{
+        font-size: 11px;
+        margin: 0 1px;
+    }
+    header > nav > a > label{
+        cursor: pointer;
+        color: rgba(255,100,0,0.7);
+    }
+    header > nav > a:hover{
+        background-color: rgba(255,255,255,0.05);
+    }
+    header > nav > button.menu{
+        display: block;
+        cursor: pointer;
+        float: right;
+        width: 35px;
+        height: auto;
+        line-height: 35px;
+        padding: 0.23% 0;
+        text-align: center;
+        font-size: 100%;
+    }
+    header > nav > button.menu:hover i{
+        color: darkgoldenrod;
+    }
+
+
+    aside.main-menu{
+        display: none;
+        position: fixed;
+        float: right;
+        width: 50%;
+        height: 100%;
+        background-color: rgba(25,24,39,1);
+    }
+    aside.main-menu > section.logo{
+        display: block;
+        position: relative;
+        cursor: default;
+        width: auto;
+        height: auto;
+        line-height: 35px;
+        padding: 1% 0;
+        border-bottom: 1px solid rgba(56, 73, 96, 0.2);
+        color: rgb(27, 124, 170);
+        font-family: IRANSans;
+        font-size: 20px;
+        text-align: center;
+    }
+    aside.main-menu > section.logo > label{
+        color: rgba(255,255,255,0.9);
+        font-size: 20px;
+        text-align: center;
+    }
+    aside.main-menu > section.logo > button.menu{
+        display: block;
+        cursor: pointer;
+        position: absolute;
+        width: 35px;
+        height: auto;
+        line-height: 35px;
+        padding: 1% 0;
+        text-align: center;
+        left: 0px;
+        top: 0px;
+    }
+    aside.main-menu > section.logo > button.menu:hover i{
+        color: darkgoldenrod;
+    }
+    aside.main-menu > section.user-details{
+        display: block;
+        overflow: hidden;
+        width: auto;
+        height: auto;
+        margin: 5% 0;
+        padding: 2%;
+        text-align: center;
+    }
+    aside.main-menu > section.user-details > span{
+        display: block;
+        width: 160px;
+        height: auto;
+        margin: 0 auto;
+    }
+    aside.main-menu > section.user-details > span > div{
+        display: block;
+        position: relative;
+        float: left;
+        width: 50px;
+        height: 50px;
+    }
+    aside.main-menu > section.user-details > span > div > img{
+        display: block;
+        position: absolute;
+        z-index: 2;
+        width: 34px;
+        height: auto;
+        margin: 8px
+    }
+    aside.main-menu > section.user-details > span > div > canvas{
+        display: block;
+        position: absolute;
+        z-index: 1;
+        margin-top: -5px;
+    }
+    aside.main-menu > section.user-details > span > label{
+        display: block;
+        float: right;
+        width: 110px;
+        height: auto;
+        line-height: 50px;
+        padding: 0 10px;
+        text-align: center;
+    }
+    aside.main-menu > nav{
+        display: block;
+        width: auto;
+        height: auto;
+    }
+    aside.main-menu > nav > a, aside.main-menu > nav > ul > li, aside.main-menu > nav > ul > ul > li{
+        display: block;
+        cursor: pointer;
+        width: 100%;
+        height: auto;
+        text-align: right;
+        line-height: 40px;
+        font-size: 12px;
+    }
+    aside.main-menu > nav > ul > ul > li > a{
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    aside.main-menu > nav > a > i, aside.main-menu > nav > ul > li > i, aside.main-menu > nav > ul > ul > li > a > i{
+        width: 15px;
+        margin: 0 10%;
+        text-align: center;
+    }
+    aside.main-menu > nav > ul > li > i.fa-ellipsis-h{
+        display: block;
+        float: left;
+        width: auto;
+        height: auto;
+        line-height: 40px;
+        margin: 0 6%;
+        font-size: 10px;
+    }
+    aside.main-menu > nav > ul > li.active{
+        background-color: rgba(255,255,255,0.05);
+    }
+    aside.main-menu > nav > a:hover, aside.main-menu > nav > ul > li:hover, aside.main-menu > nav > ul > ul > li:hover{
+        background-color: rgba(255,255,255,0.05);
+    }
+    aside.main-menu > nav > ul > ul{ display: none; }
+    aside.main-menu > nav > ul > ul > li{
+        padding: 0 10px;
+        background-color: rgba(255,255,255,0.03);
+    }
+    aside.main-menu > nav > ul > ul > li:hover{
+        background-color: rgba(255,255,255,0.05);
+    }
+
+    main.container{
+        display: block;
+        float: left;
+        width: 100%;
+        height: auto;
+        padding: 1.5%;
+    }
+    h5.alert{
+        display: block;
+        width: auto;
+        height: auto;
+        margin: 0.6%;
+        padding: 10px;
+        border-radius: 2px;
+        border: 1px solid rgba(255,255,255,0.01);
+        background-color: rgba(255,255,255,0.05);
+        box-shadow: 0px 2px 3px 2px rgba(0,0,0,0.2);
+    }
+    h5.alert.green{
+        border: 1px solid rgba(35, 119, 27,0.1);
+        background-color: rgba(35, 119, 27,0.4);
+    }
+    h5.alert.yellow{
+        border: 1px solid rgba(208, 211, 33,0.1);
+        background-color: rgba(208, 211, 33,0.4);
+    }
+    h5.alert.orange{
+        border: 1px solid rgba(234, 96, 37,0.1);
+        background-color: rgba(234, 96, 37,0.4);
+    }
+    h5.alert.red{
+        border: 1px solid rgba(175, 26, 26,0.1);
+        background-color: rgba(175, 26, 26,0.4);
+    }
+    main.container > section.header{
+        display: block;
+        overflow: hidden;
+        width: auto;
+        height: auto;
+    }
+    main.container > section.header > h3.title{
+        display: block;
+        width: auto;
+        height: auto;
+        line-height: 35px;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    main.container > section.small-info{
+        display: block;
+        overflow: hidden;
+        width: 100%;
+        height: auto;
+    }
+    main.container > section.small-info > div.item{
+        display: block;
+        float: right;
+        width: 100%;
+        height: auto;
+        margin: 1% 0;
+        border-radius: 2px;
+        border: 1px solid rgba(255,255,255,0.01);
+        background-color: rgba(255,255,255,0.05);
+        box-shadow: 0px 2px 3px 2px rgba(0,0,0,0.2);
+    }
+    main.container > section.small-info > div.item > i{
+        display: block;
+        float: right;
+        width: auto;
+        height: auto;
+        margin: 5% 3%;
+        margin-left: 3.5%;
+        font-size: 270%;
+    }
+    main.container > section.small-info > div.item > div.info{
+        display: block;
+        float: right;
+        width: auto;
+        height: 34px;
+        margin: 4% 0;
+        padding: 0 2%;
+    }
+    main.container > section.small-info > div.item > div.info > h4{
+        font-weight: bold;
+        line-height: 20px;
+    }
+    main.container > section.small-info > div.item > div.info > h5{
+        font-size: 10px;
+        line-height: 14px;
+        font-weight: normal;
+    }
+
+    main.container > section.medium-info{
+        display: block;
+        overflow: hidden;
+        width: 100%;
+        height: auto;
+        text-align: left;
+    }
+    main.container > section.medium-info > .item{
+        display: block;
+        width: 100%;
+        height: auto;
+        margin: 1% 0;
+        border-radius: 2px;
+        border: 1px solid rgba(255,255,255,0.01);
+        background-color: rgba(255,255,255,0.05);
+        box-shadow: 0px 2px 3px 2px rgba(0,0,0,0.2);
+    }
+    main.container > section.medium-info > .small-item{
+        display: block;
+        overflow: hidden;
+        float: right;
+        width: 100%;
+        height: auto;
+        margin: 1% 0;
+        border-radius: 2px;
+        border: 1px solid rgba(255,255,255,0.01);
+        background-color: rgba(255,255,255,0.05);
+        box-shadow: 0px 2px 3px 2px rgba(0,0,0,0.2);
+    }
+    main.container > section.large-info > .item{
+        display: block;
+        width: auto;
+        height: auto;
+        margin: 1% 0;
+        border-radius: 2px;
+        border: 1px solid rgba(255,255,255,0.01);
+        background-color: rgba(255,255,255,0.05);
+        box-shadow: 0px 2px 3px 2px rgba(0,0,0,0.2);
+    }
+    main.container > section.medium-info > .item > h4.title, main.container > section.medium-info > .small-item > h4.title, main.container > section.large-info > .item > h4.title{
+        display: block;
+        width: 100%;
+        height: auto;
+        line-height: 28px;
+        padding: 4px 15px;
+        font-size: 11px;
+        font-weight: bolder;
+        border-bottom: 1px solid rgba(200,200,200,0.1);
+    }
+    main.container > section.medium-info > .item > h4.title > img, main.container > section.medium-info > .small-item > h4.title > img, main.container > section.large-info > .item > h4.title > img{
+        display: inline-block;
+        width: 22px;
+        height: auto;
+        margin-left: 1%;
+        margin-bottom: -6px;
+    }
+    main.container > section.medium-info > .item > h4.title > i, main.container > section.medium-info > .small-item > h4.title > i, main.container > section.large-info > .item > h4.title > i{
+        display: inline-block;
+        margin-left: 1%;
+        font-size: 12px;
+    }
+    main.container > section.medium-info > .item > .content > h5.alert, main.container > section.medium-info > .small-item > .content > h5.alert, main.container > section.large-info > .item > .content > h5.alert{
+        margin: 1.5%;
+        padding: 1.2%;
+    }
+    main.container > section.medium-info > .item > .content > form, main.container > section.medium-info > .small-item > .content > form, main.container > section.large-info > .item > .content > form{
+        display: block;
+        width: auto;
+        height: auto;
+        margin: 1.5%;
+    }
+    main.container > section.medium-info > .item > .content > form > span, main.container > section.medium-info > .small-item > .content > form > span, main.container > section.large-info > .item > .content > form > span{
+        display: block;
+        overflow: hidden;
+        width: auto;
+        height: auto;
+        margin: 3% 0%;
+    }
+    main.container > section.medium-info > .item > .content > form > span > label, main.container > section.medium-info > .small-item > .content > form > span > label, main.container > section.large-info > .item > .content > form > span > label{
+        display: block;
+        float: right;
+        width: 20%;
+        height: auto;
+        line-height: 30px;
+    }
+    main.container > section.medium-info > .item > .content > form > span > input[type="text"],
+    main.container > section.medium-info > .item > .content > form > span > input[type="email"],
+    main.container > section.medium-info > .item > .content > form > span > input[type="password"],
+    main.container > section.medium-info > .small-item > .content > form > span > input[type="text"],
+    main.container > section.medium-info > .small-item > .content > form > span > input[type="email"],
+    main.container > section.medium-info > .small-item > .content > form > span > input[type="password"],
+    main.container > section.medium-info > .item > .content > form > span > select,
+    main.container > section.medium-info > .item > .content > form > span > textarea,
+    main.container > section.large-info > .item > .content > form > span > input[type="text"],
+    main.container > section.large-info > .item > .content > form > span > input[type="email"],
+    main.container > section.large-info > .item > .content > form > span > input[type="password"],
+    main.container > section.large-info > .small-item > .content > form > span > input[type="text"],
+    main.container > section.large-info > .small-item > .content > form > span > input[type="email"],
+    main.container > section.large-info > .small-item > .content > form > span > input[type="password"],
+    main.container > section.large-info > .item > .content > form > span > select,
+    main.container > section.large-info > .item > .content > form > span > textarea{
+        display: block;
+        float: right;
+        width: 80%;
+        height: 30px;
+        line-height: 30px;
+    }
+    main.container > section.medium-info > .item > .content > form > span > textarea, main.container > section.large-info > .item > .content > form > span > textarea{
+        min-width: 80%;
+        max-width: 80%;
+        height: auto;
+        line-height: 18px;
+        min-height: 30px;
+        max-height: 100px;
+    }
+    main.container > section.medium-info > .item > .content > form > span.radio-input > label[for], main.container > section.large-info > .item > .content > form > span.radio-input > label[for]{
+        cursor: pointer;
+        width: auto;
+        margin-left: 15px;
+    }
+    main.container > section.medium-info > .item > .content > form > span > input[type="radio"], main.container > section.large-info > .item > .content > form > span > input[type="radio"]{
+        display: block;
+        cursor: pointer;
+        float: right;
+        width: auto;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        margin: 0 1px;
+    }
+    main.container > section.medium-info > .item > .content > form > div.btns, main.container > section.large-info > .item > .content > form > div.btns{
+        display: block;
+        width: auto;
+        height: auto;
+        text-align: center;
+    }
+    main.container > section.medium-info > .item > .content > form > div.btns > button, main.container > section.large-info > .item > .content > form > div.btns > button, main.container > section.medium-info > .item > .content > form > div.btns > a.btn, main.container > section.large-info > .item > .content > form > div.btns > a.btn{
+        display: inline-block;
+        cursor: pointer;
+        width: 25%;
+        height: auto;
+        line-height: 30px;
+        margin: 1%;
+        text-align: center;
+        border-radius: 2px;
+        border: 1px solid rgba(255,255,255,0.01);
+        background-color: rgba(255,255,255,0.05);
+        box-shadow: 0px 2px 3px 2px rgba(0,0,0,0.2);
+    }
+    main.container > section.medium-info > .item > .content > form > div.btns > button:hover, main.container > section.large-info > .item > .content > form > div.btns > button:hover{
+        border: 1px solid rgba(255,255,255,0.02);
+        background-color: rgba(255,255,255,0.07);
+        box-shadow: 0px 2px 3px 1px rgba(0,0,0,0.2);
+    }
+    main.container > section.medium-info > .item > .content > p, main.container > section.medium-info > .small-item > .content > p, main.container > section.large-info > .item > .content > p{
+        display: block;
+        width: auto;
+        height: auto;
+        padding: 5px 10px;
+    }
+    main.container > section.medium-info > .item > .content > table, main.container > section.medium-info > .small-item > .content > table, main.container > section.large-info > .item > .content > table{
+        width: 97%;
+        margin: 1.5%;
+    }
+    main.container > section.medium-info > .item > .content > table td, main.container > section.medium-info > .small-item > .content > table td, main.container > section.large-info > .item > .content > table td,
+    main.container > section.medium-info > .item > .content > table th, main.container > section.medium-info > .small-item > .content > table th, main.container > section.large-info > .item > .content > table th{
+        line-height: 23px;
+        text-align: center;
+    }
+    main.container > section.medium-info > .item > .content > table th, main.container > section.medium-info > .small-item > .content > table th, main.container > section.large-info > .item > .content > table th{
+        font-weight: bold;
+        border-bottom: 0px;
+        background-color: rgba(255,255,255,0.05);
+    }
+    main.container > section.medium-info > .item > .content > table tr.hover:hover, main.container > section.medium-info > .small-item > .content > table tr.hover:hover, main.container > section.large-info > .item > .content > table tr.hover:hover{
+        background-color: rgba(255,255,255,0.05);
+    }
+
+}
+
+.english-center{
+    direction: ltr;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.paddingzero{
+    padding-left: 0;
+}
+
+#testform{
+    margin-top: 0;
+}
+
+#spanmarginzero{
+    margin-top: 0;
+}
+
+#spanmarginzero label{
+    display: block;
+    padding: 1%;
+    margin: 0.2%;
+    font-size: small;
+    background-color: rgba(60,60,60,0.9);
+    color: white;
+    text-align: center;
+    direction: ltr;
+    border-radius: 7px;
+}
+
+#spanmarginzero input[type=text]{
+    width: 100%;
+    text-align: center;
+}
+#spanmarginzero input[type=radio]{
+    display: none;
+}

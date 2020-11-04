@@ -20,11 +20,17 @@
         {% if means %}
             <input name="have_mean" value="1" type="text" class="form-control" hidden>
             <input name="word" value="{{word}}" type="text" class="form-control" hidden>
-            <label class="text-white" for=""><b>select means:</b></label>
-            {% for mean in means %}
+            {% for key,value in means.items %}
+                <label class="text-white" for=""><b>select {{key}} means:</b></label>
+                {% for mean in value %}
+                    <div class="text-white form-check mb-2 ml-4">
+                        <label class="form-check-label" >{{key}} mean number {{forloop.counter}}:</label>
+                        <input name="{{key}}-{{forloop.counter0}}" value="{{mean}}" type="text" class="form-control">
+                    </div>            
+                {% endfor %}
                 <div class="text-white form-check mb-2 ml-4">
-                    <input name="mean{{ forloop.counter0 }}" value="{{mean}}" type="checkbox" class="form-check-input" id="exampleCheck{{ forloop.counter0 }}">
-                    <label class="form-check-label" for="exampleCheck{{ forloop.counter0 }}">{{mean}}</label>
+                    <label class="form-check-label" >{{key}} mean you write:</label>
+                    <input name="{{key}}-5" value="" type="text" class="form-control">
                 </div>            
             {% endfor %}
             <br>

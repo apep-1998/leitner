@@ -1,4 +1,3 @@
-from gtts import gTTS
 from leitner.settings import MEDIA_ROOT,MEDIA_URL
 from os import path
 
@@ -16,7 +15,10 @@ import re
 
 
 def get_voice_name(word):
-    return  MEDIA_URL +  word+".mp3"
+    address = MEDIA_URL +  word+".mp3"
+    if not path.exists(address):
+        get_word_means(word)
+    return address
 
 
 def get_word_means(word):

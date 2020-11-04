@@ -1,0 +1,33 @@
+input[type="text"], input[type="email"], input[type="password"], select, option{
+    display: inline-block;
+    width: 110px;
+    height: auto;
+    line-height: 16px;
+    margin: 0px;
+    padding: 1px 3px;
+    font-size: 11px;
+    font-weight: normal;
+    color: rgba(0,0,0,0.89);
+    border-radius: 2px;
+    border: 1px solid transparent;
+    background-color: rgba(255,255,255,0.95);
+}
+input[type="text"]:hover, input[type="email"]:hover, input[type="password"]:hover{
+    border: 1px solid rgba(27,81,100,0.35);
+}
+textarea{
+    display: inline-table;
+    min-width: 200px;
+    max-width: 200px;
+    min-height: 100px;
+    max-height: 100px;
+    line-height: 16px;
+    margin: 0px;
+    padding: 1px 3px;
+    font-size: 11px;
+    font-weight: normal;
+    color: rgba(0,0,0,0.9);
+    border-radius: 2px;
+    border: 1px solid transparent;
+    background-color: rgba(255,255,255,0.95);
+}

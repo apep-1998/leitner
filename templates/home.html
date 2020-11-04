@@ -1,29 +1,141 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block main %}
-            <div class="row text-center p-3 welcome">
-                <h3 class="col-12 text-white">Welcome back <b><i>{{request.user}}</i></b></h3>
-            </div>
 
-            <div class="row p-3 ">
-                <table class="table table-striped points">
-                    <thead class="thead-dark">
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">name</th>
-                        <th scope="col">score</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                    {% for score in score_list %}
-                        <tr>
-                          <th scope="row">{{ forloop.counter }}</th>
-                          <td>{{score.user}}</td>
-                          <td>{{score.score}}</td>
-                        </tr>                    
-                    {% endfor %}
-                    </tbody>
-                  </table>
-            </div>
+            <section class="header">
+                <h3 class="title">داشبورد</h3>
+            </section>
+
+            <section class="small-info">
+                <div class="item">
+                    <i class="fas fa-file-word" style="color:darkgreen;"></i>
+                    <div class="info">
+                        <h4>کل کلمات شما</h4>
+                        <h5>{{all_user_words}} عدد</h5>
+                    </div>
+                </div>
+                <div class="item">
+                    <i class="fas fa-boxes" style="color:rgba(84,110,122 ,1);"></i>
+                    <div class="info">
+                        <h4>تعداد جعبه ها</h4>
+                        <h5>{{all_user_boxes}} عدد</h5>
+                    </div>
+                </div>
+                <div class="item">
+                    <i class="fas fa-box-open" style="color:rgba(175,180,43 ,1);"></i>
+                    <div class="info">
+                        <h4>تعداد کلمات درون جعبه ها</h4>
+                        <h5>{{all_in_box_words}} عدد</h5>
+                    </div>
+                </div>
+                <div class="item last">
+                    <i class="fab fa-readme"></i>
+                    <div class="info">
+                        <h4>تعداد کلمات آماده آزمون</h4>
+                        <h5>{{ready_to_question}} عدد</h5>
+                    </div>
+                </div>
+            </section> 
+
+            <section class="medium-info">
+                <div class="item">
+                    <h4 class="title"><img src='{% static "images/icons/chart.png"%}'> کلمات حفظ شده در طول زمان</h4>
+                    <div class="content">
+                        <canvas id="perfectmoney_nerkh" width="100" height="50"></canvas>
+                        <script>
+                            var ctx = document.getElementById("perfectmoney_nerkh").getContext('2d');
+                            var myChart = new Chart(ctx, {
+                                type: 'line',
+                                data: {
+                                    labels: ["12:30", "13:30", "14:30", "15:30", "16:30", "17:30"],
+                                    datasets: [{
+                                        label: ['قیمت'],
+                                        data: [10000, 10250, 9000, 8700, 9900, 12300],
+                                        backgroundColor: [
+                                            'rgba(198,40,40 ,0.5)'
+                                        ],
+                                        borderColor: [
+                                            'rgba(198,40,40 ,1)'
+                                        ],
+                                        borderWidth: 1
+                                    }]
+                                },
+                                options: {
+                                    legend: {
+                                        display: false,
+                                    },
+                                    scales: {
+                                        yAxes: [{
+                                            ticks: {
+                                                beginAtZero:false
+                                            }
+                                        }]
+                                    }
+                                }
+                            });
+                        </script>
+                    </div>
+                </div>
+                <div class="item last">
+                    <h4 class="title"><img src='{% static "images/icons/chart.png"%}'> املا کلمات یادگرفته شده در طول زمان</h4>
+                    <div class="content">
+                        <canvas id="webmoney_nerkh" width="100" height="50"></canvas>
+                        <script>
+                            var ctx = document.getElementById("webmoney_nerkh").getContext('2d');
+                            var myChart = new Chart(ctx, {
+                                type: 'line',
+                                data: {
+                                    labels: ["12:30", "13:30", "14:30", "15:30", "16:30", "17:30"],
+                                    datasets: [{
+                                        label: ['قیمت'],
+                                        data: [9900, 12100, 14200, 13700, 12000, 13200],
+                                        backgroundColor: [
+                                            'rgba(21,101,192 ,0.5)'
+                                        ],
+                                        borderColor: [
+                                            'rgba(21,101,192 ,1)'
+                                        ],
+                                        borderWidth: 1
+                                    }]
+                                },
+                                options: {
+                                    legend: {
+                                        display: false,
+                                    },
+                                    scales: {
+                                        yAxes: [{
+                                            ticks: {
+                                                beginAtZero:false
+                                            }
+                                        }]
+                                    }
+                                }
+                            });
+                        </script>
+                    </div>
+                </div>
+            </section>
+
+            <section class="medium-info">
+                <div class="item">
+                    <h4 class="title">جعبه ها</h4>
+                    <div class="content">
+                        <table>
+                            {% for box in boxes %}
+                                <tr class="hover">
+                                    <td class="right"><img src='{% static "images/icons/webmoney.png"%}'>{{box.name}} - {{box.mode}}</td>
+                                    <td><a href="/panel/test/{{box.pk}}">شروع</a></td>
+                                </tr>
+                            
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                <div class="item last">
+                    <h4 class="title">آخرین مطلب در وبلاگ ما</h4>
+                    <div class="content">
+                    </div>
+                </div>
+            </section>
 
 {% endblock main %}

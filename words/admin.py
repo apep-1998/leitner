@@ -1,12 +1,18 @@
 from django.contrib import admin
-from words.models import WordModel, LeitnerModel
+from words.models import WordModel, LeitnerBoxModel, CategoryModel, LeitnerItemModel
 
-# Register your models here.
+@admin.register(CategoryModel)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ("name", "descripsion")
+
+@admin.register(WordModel)
 class WordAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(WordModel, WordAdmin)
+    list_display = ("word", "means", "categorys")
 
+@admin.register(LeitnerBoxModel)
+class LeitnerBoxAdmin(admin.ModelAdmin):
+    list_display = ("name", "mode", "user", "descripsion")
 
-class LeitnerAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(LeitnerModel, LeitnerAdmin)
+@admin.register(LeitnerItemModel)
+class LeitnerItemAdmin(admin.ModelAdmin):
+    list_display = ("box", "word", "level", "date")

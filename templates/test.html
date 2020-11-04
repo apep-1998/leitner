@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+            {% if last_answer == True %}
+                <h5 class="alert green">جواب قبل شما درست بود.</h5>
+            {% elif last_answer == False %}
+                <h5 class="alert red">جواب قبل شما نادرست بود.</h5>
+            {% endif %}
+
+            <section class="header">
+                <h3 class="title">{{self.title}}</h3>
+            </section>
+
+            <section class="large-info">
+                <div class="item">
+                    <audio id="voice" src="{{word.voice}}" autoplay></audio>
+                    {% if box.mode == "M" %}
+                        <h4 class="title english-center"><i id="play" class="fas fa-play-circle"></i> What's meaning of {{word.word}} ?</h4>
+                    {% else %}
+                        <h4 class="title english-center"><i id="play" class="fas fa-play-circle"></i> Spell word</h4>
+                    {% endif %}
+                    <div class="content paddingzero">
+                        <form action="" method="POST" id="testform" autocomplete="off">
+                            {% csrf_token %}
+                            {% for item in form %}
+                                <span id="spanmarginzero">
+                                    {{item}}
+                                    {% comment %} <label class="english-center">{{item.label_tag}}</label> <br><br> {% endcomment %}
+                                </span>
+                            {% endfor %}
+                            <div class="btns">
+                                <button>Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <script>
+                $(document).ready(function(){
+                    $("input:radio").click(function(){
+                    if ($(this).is(":checked")){
+                    $("li label").css({"color":"white","background-color":"rgba(60,60,60,0.9)"}) && $(this).closest("li label").css({"color":"black","background-color":"green"});
+                    }
+                    });
+                    $("#play").click(function(){
+                        $("#voice")[0].play();
+                    });
+                });
+            </script>
+
+{% endblock main %}

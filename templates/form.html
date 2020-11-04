@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+            {% if success %}
+                <h5 class="alert green">با موفقیت افزوده شد.</h5>
+            {% endif %}
+
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <h5 class="alert red">{{field.label_tag}} - {{error}}</h5>
+                {% endfor %}
+            {% endfor %}
+
+            <section class="header">
+                <h3 class="title">{{self.title}}</h3>
+            </section>
+
+            <section class="medium-info">
+                <div class="item">
+                    <h4 class="title"><i class="far fa-credit-card"></i> فرم {{self.title}}  </h4>
+                    <div class="content">
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            {% for item in form %}
+                                <span>
+                                    <label>{{item.label_tag}}</label>
+                                    {{item}}
+                                </span>
+                            {% endfor %}
+                            <div class="btns">
+                                <button>ثبت</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="item last">
+                    <h4 class="title"><i class="fas fa-exclamation-triangle"></i> نکات و هشدارها</h4>
+                    <div class="content">
+                        <p>
+                            {% for tip in self.tips %}
+                                {{tip}}
+                                <br>
+                                <br>
+                            {% endfor %}
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+{% endblock main %}
