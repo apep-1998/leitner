@@ -18,19 +18,17 @@
                                     <tr class="hover">
                                         {% for d in item.1 %}
                                             <td>
-                                                {% if forloop.counter0 == 2 and d != 0%}
-                                                    <a href="/panel/test/{{item.0}}"> 
-                                                        {{d}}
-                                                    </a>
-                                                {% elif forloop.counter0 == 3 and d != 0%}
-                                                    <a href="/panel/review/{{item.0}}"> 
-                                                        {{d}}
-                                                    </a>
-                                                {% else %}
-                                                        {{d}}
-                                                {% endif %}
+                                                {{d}}
                                             </td>
                                         {% endfor %}
+                                            <td>
+                                                <a href="/panel/review/{{item.0}}/">
+                                                    مرور کلمات
+                                                </a>/
+                                                <a href="/panel/test/{{item.0}}/">
+                                                    آزمون کلمات
+                                                </a>
+                                            </td>
                                     </tr>
                             {% endfor %}
                         </table>

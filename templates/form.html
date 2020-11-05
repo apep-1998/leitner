@@ -29,6 +29,9 @@
                                 </span>
                             {% endfor %}
                             <div class="btns">
+                                {% if box.mode == "M" %}
+                                    <button id="gmean">دریافت معنی</button>
+                                {% endif %}
                                 <button>ثبت</button>
                             </div>
                         </form>
@@ -47,5 +50,17 @@
                     </div>
                 </div>
             </section>
+
+            <script>
+                $(document).ready(function(){
+                    $("#gmean").click(function(){
+                        var word = $("#id_word").val();
+                        $.get("/panel/wordmean/"+word+"/", function(data, status){
+                            $("#id_means").val(data.means);
+                        });
+                    });
+                });
+
+            </script>
 
 {% endblock main %}

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block main %}
+            <section class="header">
+                <h3 class="title">{{self.title}}</h3>
+            </section>
+
+            <section class="large-info">
+                <div class="item">
+                    <h4 class="title"><i class="fas fa-list fa-rotate-180"></i> لیست {{self.title}} {{box.name}}</h4>
+                    <div class="content">
+                        <table>
+                            <tr>
+                                <th>کلمه</th>
+                                <th>تلفظ</th>
+                                {% if box.mode == "M" %}
+                                    <th>معنی</th>
+                                {% endif %}
+                            </tr>
+                            {% for word in words %}
+                                    <audio id="{{word.0}}" src="{{word.2}}"></audio>
+                                    <tr class="hover">
+                                            <td>
+                                                {{word.0}}
+                                            </td>
+                                            <td>
+                                                <i id="{{word.0}}icon" class="fas fa-play-circle">
+                                            </td>
+                                            {% if box.mode == "M" %}
+                                                <td>
+                                                    {{word.1}}
+                                                </td>
+                                            {% endif %}
+                                    </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <script>
+                $(document).ready(function(){
+                    {% for word in words %}
+                        $("#{{word.0}}icon").click(function(){
+                            $("#{{word.0}}")[0].play();
+                        });
+                    {% endfor %}
+                });
+            </script>
+
+
+{% endblock main %}

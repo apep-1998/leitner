@@ -22,4 +22,5 @@ from .views import index
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('panel/', include('words.urls')),
+    path('', index),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

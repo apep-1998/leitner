@@ -123,8 +123,9 @@
                         <table>
                             {% for box in boxes %}
                                 <tr class="hover">
-                                    <td class="right"><img src='{% static "images/icons/webmoney.png"%}'>{{box.name}} - {{box.mode}}</td>
-                                    <td><a href="/panel/test/{{box.pk}}">شروع</a></td>
+                                    <td class="right"><img src='{% static "images/icons/webmoney.png"%}'>{{box.0.name}} - {{box.0.mode}}</td>
+                                    <td><a href="/panel/test/{{box.0.pk}}">تست ({{box.1}})</a></td>
+                                    <td><a href="/panel/review/{{box.0.pk}}">مرور ({{box.2}})</a></td>
                                 </tr>
                             
                             {% endfor %}

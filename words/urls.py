@@ -19,13 +19,16 @@ from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     path('', index_view, name="index"),
-    path('addcat/', login_required(AddCat.as_view()), name="add cat"),
-    # path('listcat/', login_required(ListCat.as_view()), name="list cat"),
-    
-    path('addword/', login_required(AddWord.as_view()), name="add word"),
-    path('addbox/', login_required(AddBox.as_view()), name="add box"),
-    path('add2box/', login_required(Add2Box.as_view()), name="add item box"),
+    path('addbox/', login_required(AddBox.as_view()), name="add_box"),
+    path('add2box/<int:box_pk>/', login_required(Add2Box.as_view())),
+    path('removebox/<int:box_pk>/', remove_box),
+    path('copybox/<int:box_pk>/', copy_box),
+    # path('removefrombox/<int:box_pk>/', login_required(RemoveFromBox.as_view())),
+    path('boxlist/', login_required(BoxList.as_view()), name="box_list"),
+    path('wordmean/<str:word>/', get_means, name="wordmeans"),
+
     path('meanboxlist/', login_required(MeanBoxList.as_view()), name="mean box list"),
     path('spellboxlist/', login_required(SpellBoxList.as_view()), name="spell box list"),
-    path('test/<int:boxnumber>/', login_required(TestBox.as_view()), name="test box"),
+    path('test/<int:box_pk>/', login_required(TestBox.as_view()), name="test box"),
+    path('review/<int:box_pk>/', login_required(ReviewBox.as_view()), name="review box"),
 ]

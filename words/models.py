@@ -6,34 +6,16 @@ from django.utils.translation import gettext_lazy as _
 import json
 
 
-class CategoryModel(models.Model):
-    name = models.CharField(unique=True, max_length=20,
-                            null=False, blank=False, verbose_name=_("category name"))
-
-    descripsion = models.CharField(max_length=200, verbose_name=_("descripsion"))
-
-    class Meta:
-        verbose_name = _("category")
-        verbose_name_plural = _("categories")
-
-    def __unicode__(self):
-        return self.name
-
-    def __str__(self):
-        return self.name
-
-
 class WordModel(models.Model):
     word = models.CharField(max_length=20, null=False,
                             blank=False, verbose_name=_("word"))
-    means = models.TextField(null=False, blank=False, verbose_name=_("means"))
+    means = models.TextField(verbose_name=_("means"))
     voice = models.FileField(null=True, blank=True,
                              verbose_name=_("word voice"))
 
-    categorys = models.ForeignKey(CategoryModel, verbose_name=_(
-        "categorys"), on_delete=models.CASCADE)
-
     def get_means(self):
+        if self.means == "":
+            return []
         return json.loads(self.means)
 
     def save(self, *args, **kwargs):

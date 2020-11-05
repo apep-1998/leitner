@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block main %}
+            <section class="header">
+                <h3 class="title">لیست جعبه ها</h3>
+            </section>
+
+            <section class="large-info">
+                <div class="item">
+                    <h4 class="title"><i class="fas fa-list fa-rotate-180"></i> لیست جعبه ها</h4>
+                    <div class="content">
+                        <table>
+                            <tr>
+                                <th>نام</th>
+                                <th>نوع جعبه</th>
+                                <th>توضیحات</th>
+                                <th>مدیریت جعبه</th>
+                                <th>اشتراک گذاری</th>
+                            </tr>
+                            {% for item in object_list %}
+                                    <tr class="hover">
+                                            <td>{{item.name}}</td>
+                                            {% if item.mode == "M" %}
+                                                <td>معنی</td>
+                                            {% else %}
+                                                <td>املا</td>
+                                            {% endif %}
+                                            <td>{{item.descripsion}}</td>
+                                            <td>
+                                                <a href="/panel/add2box/{{item.pk}}/">
+                                                    اضافه کردن کلمه
+                                                </a>/
+                                                <a href="/panel/add2box/{{item.pk}}/">
+                                                    حذف کلمه
+                                                </a>/
+                                                <a href="/panel/removebox/{{item.pk}}/">
+                                                    حذف جعبه
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <input id="share{{item.id}}" type="text" value="{{ request.scheme }}://{{ request.META.HTTP_HOST }}/panel/copybox/{{item.pk}}/">
+                                                <button onclick="copy('share{{item.id}}')">copy</button>
+                                            </td>
+                                    </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <script>
+                function copy(itemid) {
+                    var copyText = document.getElementById(itemid);
+                    copyText.select();
+                    copyText.setSelectionRange(0, 99999);
+                    document.execCommand("copy");
+                    alert("share link Copied.");
+                }
+            </script>
+{% endblock main %}
