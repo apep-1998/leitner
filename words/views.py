@@ -70,7 +70,7 @@ def copy_box(request, box_pk):
     box = LeitnerBoxModel.objects.get(pk=box_pk)
     user = request.user
     if box.user != user:
-        boxes = LeitnerBoxModel.objects.get(user=user)
+        boxes = LeitnerBoxModel.objects.filter(user=user)
         for b in boxes:
             if b.name == box.name and b.mode == box.mode:
                 break
