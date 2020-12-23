@@ -10,21 +10,20 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 
 
-from .forms import WordForm
+from .forms import CartForm
 from .forms import NewBoxForm
 from .forms import AddItem2Box
-from .forms import SpellForm
-from .forms import MeanForm
+from .forms import DictationForm
+from .forms import AnswerForm
 
 from .models import LeitnerBoxModel
 from .models import LeitnerItemModel
-from .models import WordModel
+from .models import CartModel
 import pytz
 
-from .tools import get_word_means
 
 levels = [
-    timedelta(minutes=1),
+    timedelta(seconds=10),
     timedelta(hours=20),
     timedelta(days=1, hours=20),
     timedelta(days=3, hours=20),
@@ -33,30 +32,30 @@ levels = [
 
 
 def index_view(request):
-    all_user_words = 0
+    all_user_carts = 0
     all_user_boxes = 0
-    all_in_box_words = 0
+    all_in_box_carts = 0
     ready_to_question = 0
     boxes = LeitnerBoxModel.objects.filter(user=request.user)
-    ready_word_number = []
+    ready_cart_number = []
     ready_review = []
     for box in boxes:
-        all_user_words += LeitnerItemModel.objects.filter(box=box).count()
+        all_user_carts += LeitnerItemModel.objects.filter(box=box).count()
         all_user_boxes += 1
-        all_in_box_words += LeitnerItemModel.objects.filter(box=box, level__lt=6).count()
-        ready_word_number.append(len(get_box_ready_words(box)))
+        all_in_box_carts += LeitnerItemModel.objects.filter(box=box, level__lt=6).count()
+        ready_cart_number.append(len(get_box_ready_carts(box)))
         ready_review.append(LeitnerItemModel.objects.filter(box=box, level=0).count())
-    ready_to_question = sum(ready_word_number)
-    boxes = zip(boxes, ready_word_number, ready_review)        
+    ready_to_question = sum(ready_cart_number)
+    boxes = zip(boxes, ready_cart_number, ready_review)        
     return render(request, "home.html", locals())
 
-def get_box_ready_words(box):
+def get_box_ready_carts(box):
     out = []
-    words = LeitnerItemModel.objects.filter(box=box)
-    for word in words:
-        if(0 <= word.level < len(levels) and 
-           word.date + levels[word.level] < datetime.now(tz=pytz.utc)):
-            out.append(word)
+    carts = LeitnerItemModel.objects.filter(box=box)
+    for cart in carts:
+        if(0 <= cart.level < len(levels) and 
+           cart.date + levels[cart.level] < datetime.now(tz=pytz.utc)):
+            out.append(cart)
     
     return out
 
@@ -89,8 +88,8 @@ def copy_box(request, box_pk):
     return redirect("box_list")
 
 
-def get_means(request, word):
-    means, voice = get_word_means(word)
+def get_means(request, cart):
+    means, voice = get_cart_means(cart)
     out = {
         "means" : "\r\n".join(means[0:5]),
     }
@@ -123,7 +122,7 @@ class Add2Box(views.View):
     def get(self, request, box_pk, success=False):
         box = LeitnerBoxModel.objects.get(pk=box_pk)
         if box.user == request.user:
-            form = WordForm(mode=box.mode)
+            form = CartForm(mode=box.mode)
             return render(request, "form.html", locals())
 
         return redirect("index")
@@ -133,11 +132,11 @@ class Add2Box(views.View):
         ## check box for user
         if box.user == request.user:
     
-            form = WordForm(request.POST, mode=box.mode)
+            form = CartForm(request.POST, mode=box.mode)
 
             if form.is_valid():
-                word = form.save()
-                LeitnerItemModel(box=box, word=word).save()
+                cart = form.save()
+                LeitnerItemModel(box=box, cart=cart).save()
                 return self.get(request, box_pk=box_pk, success=True)
 
             return render(request, "form.html", locals())
@@ -165,7 +164,7 @@ class MeanBoxList(views.View):
         for box in LeitnerBoxModel.objects.filter(user=request.user, mode="M"):
             item = [box.name,]
             item.append(LeitnerItemModel.objects.filter(box=box).count())
-            item.append(len(get_box_ready_words(box)))
+            item.append(len(get_box_ready_carts(box)))
             item.append(LeitnerItemModel.objects.filter(box=box, level=0).count())
             item.append(box.descripsion)
             items.append((box.pk, item))
@@ -176,16 +175,16 @@ class MeanBoxList(views.View):
         pass
 
 
-class SpellBoxList(views.View):
+class DictationBoxList(views.View):
     title = "جعبه های املا"
     tips = []
     heads = ["نام", "تعداد کل کلمات", "تعداد کلمات آماده آزمون", "کلمات قابل مرور" , "توضیحات", "فعالیت ها"]
     def get(self, request):
         items = []
-        for box in LeitnerBoxModel.objects.filter(user=request.user, mode="S"):
+        for box in LeitnerBoxModel.objects.filter(user=request.user, mode="D"):
             item = [box.name,]
             item.append(LeitnerItemModel.objects.filter(box=box).count())
-            item.append(len(get_box_ready_words(box)))
+            item.append(len(get_box_ready_carts(box)))
             item.append(LeitnerItemModel.objects.filter(box=box, level=0).count())
             item.append(box.descripsion)
             items.append((box.pk, item))
@@ -196,28 +195,28 @@ class SpellBoxList(views.View):
         pass
 
 
-def get_random_answers(word):
+def get_random_answers(cart):
     means = []
-    for w in WordModel.objects.filter(~Q(pk = word.pk)):
+    for w in CartModel.objects.filter(~Q(pk = cart.pk)):
         try:
             means.append(choice(w.get_means()))
         except:
             pass
     shuffle(means)
     means = means[0:3]
-    means.append(choice(word.get_means()))
+    means.append(cart.back)
     shuffle(means)
     means.append("I don't know!")
     return means
 
-def level_up_item(word, box):
-    box_item = LeitnerItemModel.objects.get(box=box, word=word)
+def level_up_item(cart, box):
+    box_item = LeitnerItemModel.objects.get(box=box, cart=cart)
     box_item.level += 1
     box_item.date = datetime.now(tz=pytz.utc)
     box_item.save()
     
-def restart_item(word, box):
-    box_item = LeitnerItemModel.objects.get(box=box, word=word)
+def restart_item(cart, box):
+    box_item = LeitnerItemModel.objects.get(box=box, cart=cart)
     box_item.level = 0
     box_item.date = datetime.now(tz=pytz.utc)
     box_item.save()
@@ -229,16 +228,16 @@ class TestBox(views.View):
         box = LeitnerBoxModel.objects.get(pk=box_pk)
         if box.user == request.user:
             try:
-                word = choice(get_box_ready_words(box)).word
-                print(word)
+                cart = choice(get_box_ready_carts(box)).cart
+                print(cart)
             except:
                 return redirect("index")
                 
             if box.mode == "M":
-                means = get_random_answers(word)
-                form = MeanForm(choices=means, initial={"pk": word.pk})
+                means = get_random_answers(cart)
+                form = AnswerForm(choices=means, initial={"pk": cart.pk})
             else:
-                form = SpellForm(initial={"pk": word.pk})
+                form = DictationForm(initial={"pk": cart.pk})
             return render(request, "test.html", locals())
 
         return redirect("index")
@@ -248,29 +247,29 @@ class TestBox(views.View):
         if box.user == request.user:
             last_answer = None
             if box.mode == "M":
-                form = MeanForm(request.POST)
+                form = AnswerForm(request.POST)
                 form.is_valid()
-                word = WordModel.objects.get(pk=form.cleaned_data["pk"])
-                means = word.get_means()
-                form = MeanForm(request.POST, choices=means)
-                if word.word in [w.word.word for w in get_box_ready_words(box)]:
+                cart = CartModel.objects.get(pk=form.cleaned_data["pk"])
+                form = AnswerForm(request.POST, choices=[cart.back,])
+                if cart.front in [w.cart.front for w in get_box_ready_carts(box)]:
                     if form.is_valid():
                         last_answer = True
-                        level_up_item(word, box)
+                        level_up_item(cart, box)
                     else:
                         last_answer = False
-                        restart_item(word, box)
+                        restart_item(cart, box)
             else:
-                form = SpellForm(request.POST)
+                form = DictationForm(request.POST)
                 if form.is_valid():
-                    word = WordModel.objects.get(pk=form.cleaned_data["pk"])
-                    if word.word in [w.word.word for w in get_box_ready_words(box)]:
-                        if word.word == form.cleaned_data["spell"]:
+                    cart = CartModel.objects.get(pk=form.cleaned_data["pk"])
+                    if cart.front in [w.cart.front for w in get_box_ready_carts(box)]:
+                        print('========', cart, form.cleaned_data["dictation"])
+                        if cart.back == form.cleaned_data["dictation"]:
                             last_answer = True
-                            level_up_item(word, box)
+                            level_up_item(cart, box)
                         else:
                             last_answer = False
-                            restart_item(word, box)
+                            restart_item(cart, box)
                 else:
                     print(form.errors)
                 
@@ -283,8 +282,8 @@ class ReviewBox(views.View):
     def get(self, request, box_pk, last_answer=None):
         box = LeitnerBoxModel.objects.get(pk=box_pk)
         if box.user == request.user:
-            words = [(item.word.word, ",".join(item.word.get_means()), item.word.voice) for item in LeitnerItemModel.objects.filter(box=box, level=0)]
-            print(words)
+            carts = [(item.cart.front, item.cart.back, item.cart.voice) for item in LeitnerItemModel.objects.filter(box=box, level=0)]
+            print(carts)
             return render(request, "review_list.html", locals())
         
         return redirect("index")

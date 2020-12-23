@@ -1,9 +1,9 @@
 from django.contrib import admin
-from words.models import WordModel, LeitnerBoxModel, LeitnerItemModel
+from words.models import CartModel, LeitnerBoxModel, LeitnerItemModel
 
-@admin.register(WordModel)
+@admin.register(CartModel)
 class WordAdmin(admin.ModelAdmin):
-    list_display = ("word", "means")
+    list_display = ("front", "back")
 
 @admin.register(LeitnerBoxModel)
 class LeitnerBoxAdmin(admin.ModelAdmin):
@@ -11,4 +11,4 @@ class LeitnerBoxAdmin(admin.ModelAdmin):
 
 @admin.register(LeitnerItemModel)
 class LeitnerItemAdmin(admin.ModelAdmin):
-    list_display = ("box", "word", "level", "date")
+    list_display = ("box", "cart", "level", "date")

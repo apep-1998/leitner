@@ -27,8 +27,8 @@ urlpatterns = [
     path('boxlist/', login_required(BoxList.as_view()), name="box_list"),
     path('wordmean/<str:word>/', get_means, name="wordmeans"),
 
-    path('meanboxlist/', login_required(MeanBoxList.as_view()), name="mean box list"),
-    path('spellboxlist/', login_required(SpellBoxList.as_view()), name="spell box list"),
+    path('meanBoxList/', login_required(MeanBoxList.as_view()), name="mean box list"),
+    path('dictationBoxList/', login_required(DictationBoxList.as_view()), name="Dictation box list"),
     path('test/<int:box_pk>/', login_required(TestBox.as_view()), name="test box"),
     path('review/<int:box_pk>/', login_required(ReviewBox.as_view()), name="review box"),
 ]

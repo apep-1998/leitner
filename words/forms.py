@@ -1,46 +1,33 @@
 from django.forms import ValidationError
 from django import forms
 from django.forms import ModelForm
-from .models import WordModel
+from .models import CartModel
 from .models import LeitnerBoxModel
 from .models import LeitnerItemModel
 import json
 
 
-class WordForm(ModelForm):
+class CartForm(ModelForm):
     class Meta:
-        model = WordModel
-        fields = ['word', 'means']
+        model = CartModel
+        fields = ['front', 'back', 'image', 'voice']
 
     def __init__(self, *args, **kwargs):
         self.mode = kwargs.pop("mode", None)
-        super(WordForm, self).__init__(*args, **kwargs)
-        if self.mode == "S":
-            self.fields.pop("means")
-        self.fields["word"].widget.attrs["autofocus"] = ""
+        super(CartForm, self).__init__(*args, **kwargs)
+        self.fields["front"].widget.attrs["autofocus"] = ""
 
-    def clean_word(self):
-        data = self.cleaned_data["word"]
+    def clean_front(self):
+        data = self.cleaned_data["front"]
         data = data.strip()
         data = data.lower()
         return data
 
-    def clean_means(self):
-        if self.mode == "S":
-            return "[]"
-
-        data = self.cleaned_data["means"]
-
-        data = data.split("\r\n")
-        out = []
-        for d in data:
-            if d.strip() != "":
-                out.append(d.strip())
-
-        if len(out) == 0 and self.mode == "M":
-            raise ValidationError("len means = 0")
-
-        return json.dumps(data)
+    def clean_back(self):
+        data = self.cleaned_data["back"]
+        data = data.strip()
+        data = data.lower()
+        return data
 
 
 class NewBoxForm(ModelForm):
@@ -71,7 +58,7 @@ class NewBoxForm(ModelForm):
 class AddItem2Box(ModelForm):
     class Meta:
         model = LeitnerItemModel
-        fields = ['box', 'word']
+        fields = ['box', 'cart']
 
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop('user', None)
@@ -79,17 +66,7 @@ class AddItem2Box(ModelForm):
         self.fields['box'].queryset = LeitnerBoxModel.objects.filter(
             user=self.user)
 
-        # words = []
-        # for word in WordModel.objects.all():
-        #     user_words = LeitnerItemModel.objects.filter(word=word)
-        #     for user_word in user_words:
-        #         if user_word.box.user == self.user:
-        #             break
-        #     else:
-        #         words.append(word.pk)
-
-        # self.fields['word'].queryset = WordModel.objects.filter(pk__in=words)
-        self.fields['word'].queryset = WordModel.objects.all()
+        self.fields['cart'].queryset = CartModel.objects.all()
 
     def clean_mode(self):
         data = self.cleaned_data["name"]
@@ -102,23 +79,23 @@ class AddItem2Box(ModelForm):
         return self.cleaned_data["mode"]
 
 
-class SpellForm(forms.Form):
+class DictationForm(forms.Form):
     pk = forms.IntegerField(required=True, widget=forms.HiddenInput())
-    spell = forms.CharField(max_length=20, required=True, widget=forms.TextInput(
-        {"placeholder": "spell", "autofocus": ''}))
+    dictation = forms.CharField(max_length=20, widget=forms.TextInput(
+        {"placeholder": "dictation", "autofocus": ''}))
 
-    def clean_spell(self):
-        data = self.cleaned_data["spell"]
+    def clean_dictation(self):
+        data = self.cleaned_data["dictation"]
         data = data.strip()
         data = data.lower()
         return data
 
 
-class MeanForm(forms.Form):
+class AnswerForm(forms.Form):
     pk = forms.IntegerField(required=True, widget=forms.HiddenInput())
-    means = forms.ChoiceField(widget=forms.RadioSelect)
+    answers = forms.ChoiceField(widget=forms.RadioSelect)
 
     def __init__(self, *args, **kwargs):
         choices = kwargs.pop("choices", [])
-        super(MeanForm, self).__init__(*args, **kwargs)
-        self.fields['means'].choices = [(item, item) for item in choices]
+        super(AnswerForm, self).__init__(*args, **kwargs)
+        self.fields['answers'].choices = [(item, item) for item in choices]

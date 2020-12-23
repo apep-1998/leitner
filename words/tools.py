@@ -10,18 +10,7 @@ import random
 import re
 # end web scraping import
 
-
-
-
-
-def get_voice_name(word):
-    address = MEDIA_URL +  word+".mp3"
-    if not path.exists(address):
-        get_word_means(word)
-    return address
-
-
-def get_word_means(word):
+def get_voice(word):
     headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
 
     session = requests.session()
@@ -33,17 +22,6 @@ def get_word_means(word):
             break
         except Exception as e:
             time.sleep(1)
-
-    head = soup.find_all("div", {"class": "def"})
-    means = []
-    for h in head:
-        mean = h.find_all(text=True, recursive=True)
-        mean = mean[:-1]
-        mean = "".join(mean).strip().lower()
-        mean = mean.replace(";", ".")
-        mean = mean.replace(",", ".")
-        mean = mean.replace("\n", " ")
-        means.append(mean)
     
     #voice
     sources = soup.find_all("source", {"type": "audio/mpeg"})
@@ -61,5 +39,5 @@ def get_word_means(word):
                     time.sleep(1)
             break
                         
-    return means, voice_file
+    return word+".mp3"
 

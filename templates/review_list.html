@@ -10,24 +10,24 @@
                     <div class="content">
                         <table>
                             <tr>
-                                <th>کلمه</th>
+                                <th>رو کارت</th>
                                 <th>تلفظ</th>
                                 {% if box.mode == "M" %}
-                                    <th>معنی</th>
+                                    <th>پشت کارت</th>
                                 {% endif %}
                             </tr>
-                            {% for word in words %}
-                                    <audio id="{{word.0}}" src="{{word.2}}"></audio>
+                            {% for cart in carts %}
+                                    <audio id="{{cart.0}}" src="/media/{{cart.2}}"></audio>
                                     <tr class="hover">
                                             <td>
-                                                {{word.0}}
+                                                {{cart.0}}
                                             </td>
                                             <td>
-                                                <i id="{{word.0}}icon" class="fas fa-play-circle">
+                                                <i id="{{cart.0}}icon" class="fas fa-play-circle">
                                             </td>
                                             {% if box.mode == "M" %}
                                                 <td>
-                                                    {{word.1}}
+                                                    {{cart.1}}
                                                 </td>
                                             {% endif %}
                                     </tr>
@@ -39,9 +39,9 @@
 
             <script>
                 $(document).ready(function(){
-                    {% for word in words %}
-                        $("#{{word.0}}icon").click(function(){
-                            $("#{{word.0}}")[0].play();
+                    {% for cart in carts %}
+                        $("#{{cart.0}}icon").click(function(){
+                            $("#{{cart.0}}")[0].play();
                         });
                     {% endfor %}
                 });

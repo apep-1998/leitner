@@ -14,12 +14,10 @@
 
             <section class="large-info">
                 <div class="item">
-                    <audio id="voice" src="{{word.voice}}" autoplay></audio>
-                    {% if box.mode == "M" %}
-                        <h4 class="title english-center"><i id="play" class="fas fa-play-circle"></i> What's meaning of {{word.word}} ?</h4>
-                    {% else %}
-                        <h4 class="title english-center"><i id="play" class="fas fa-play-circle"></i> Spell word</h4>
-                    {% endif %}
+                    <audio id="voice" src="/media/{{cart.voice}}"></audio>
+                    <h4 class="title english-center"><i id="play" class="fas fa-play-circle"></i> What's meaning of this ?</h4>
+                    <h4 class="title english-center">{{cart.front}}</h4>
+                    <img src="/media/{{cart.image}}" alt="" height="400px" width="auto">
                     <div class="content paddingzero">
                         <form action="" method="POST" id="testform" autocomplete="off">
                             {% csrf_token %}
